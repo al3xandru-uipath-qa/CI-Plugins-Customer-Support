@@ -6,7 +6,7 @@
 		
 		"orchestratorUrl": "https://alpha.uipath.com/",
 		"accountForApp": "customersupport",
-		"orchestratorTenant": "Default",
+		"orchestratorTenant": "DefaultTenant",
 		"organizationUnit": "Support",
 				
 		"applicationId": "e1b07f95-6ab6-4551-8e32-df3bdf3b6060",
