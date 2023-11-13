@@ -1,22 +1,22 @@
 {
 	"type": "PackOptions",
 	"options": {
-                "projectPath": "",
-                "outputType": "Process",
+		"projectPath": "",
+		"outputType": "Process",
 		"autoVersion": true,
 		"destinationFolder": "",
 		
                 
 		"orchestratorUrl": "https://alpha.uipath.com/",
-                "accountForApp": "customersupport",
-                "orchestratorTenant": "DefaultTenant",
-                "organizationUnit": "Support",
+		"accountForApp": "customersupport",
+		"orchestratorTenant": "DefaultTenant",
+		"organizationUnit": "Support",
                 
 		"applicationId": "e1b07f95-6ab6-4551-8e32-df3bdf3b6060",
 		"applicationSecret": "",
 		"applicationScope": "OR.Folders OR.BackgroundTasks OR.TestSets OR.TestSetExecutions OR.TestSetSchedules OR.Settings.Read OR.Robots.Read OR.Machines.Read OR.Execution OR.Assets OR.Users.Read OR.Jobs OR.Monitoring",
 		
-                "language": "en-US",
-                "traceLevel": "None"
+		"language": "en-US",
+		"traceLevel": "None"
 	}
 }
