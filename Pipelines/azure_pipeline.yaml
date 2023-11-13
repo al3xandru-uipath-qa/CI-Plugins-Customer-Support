@@ -1,0 +1,67 @@
+trigger:
+- main
+
+pool:
+  vmImage: windows-latest
+
+# variables:
+#   UIPATH_EXTENSIONS_CLI_TELEMETRY_ENABLED: 'False'
+
+steps:
+
+  - task: DownloadPackage@1
+    inputs:
+      packageType: 'nuget'
+      feed: ''
+      view: ''
+      definition: ''
+      version: ''
+      extract: false
+      downloadPath: '$(System.ArtifactsDirectory)'
+
+  - task: UiPathInstallPlatform-preview@4
+    inputs:
+      cliVersion: 'WIN_22.10.8438.32859'
+      cliNupkgPath: '$(System.ArtifactsDirectory)\UiPath.CLI.Windows.nupkg'
+
+  - task: UiPathAssets-preview@4
+    inputs:
+      orchestratorConnection: 'OrchestratorConnection'
+      folderName: 'Support'
+      assetActionType: 'Deploy'
+      csvFile: 'deploy_assests.csv'
+      traceLevel: 'Information'
+
+  - task: UiPathPack-preview@4
+    inputs:
+      versionType: 'AutoVersion'
+      projectJsonPath: 'project.json'
+      orchestratorConnection: 'OrchestratorConnection'
+      outputPath: '$(Build.ArtifactStagingDirectory)\Output'
+      runWorkflowAnalysis: true
+      traceLevel: 'Information'
+
+  - task: UiPathDeploy-preview@4
+    inputs:
+      orchestratorConnection: 'OrchestratorConnection'
+      packagesPath: '$(Build.ArtifactStagingDirectory)\Output'
+      folderName: 'Support'
+      traceLevel: 'Information'
+
+  - task: UiPathTest-preview@4
+    inputs:
+      testTarget: 'TestProject'
+      orchestratorConnection: 'OrchestratorConnection'
+      testProjectPath: 'project.json'
+      folderName: 'Support'
+      timeout: '7200'
+      traceLevel: 'Information'
+      attachRobotLogs: true
+
+  - task: UiPathRunJob-preview@4
+    inputs:
+      orchestratorConnection: 'OrchestratorConnection'
+      processName: ''
+      folderName: 'Support'
+      jobCount: 1
+      traceLevel: 'Information'

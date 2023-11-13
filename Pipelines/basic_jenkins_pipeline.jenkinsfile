@@ -1,0 +1,178 @@
+pipeline {
+    agent {
+        label 'plugins-jenkins-lts-agent-01'
+    }
+
+    stages {
+        stage ('Clone') {
+            steps {
+                git (
+                    changelog: false,
+                    poll: false,
+                    url: 'https://github.com/al3xandru-uipath-qa/CI-Plugins-Customer-Support.git'
+                )
+            }
+        }
+        
+        stage('Install Platform') {
+            steps {
+                UiPathInstallPlatform (
+                    cliNupkgPath: '${WORKSPACE}\\nupkg\\UiPath.CLI.Windows.23.10.0-dev.nupkg',
+                    cliVersion: 'WIN_23.2.8467.25277',
+                    traceLevel: 'Information'
+                )
+            }
+        }
+        
+        stage ('Deploy Assets') {
+            steps {
+                UiPathAssets (
+                    assetsAction: DeployAssets(),
+                    credentials: ExternalApp (
+                        accountForApp: 'customersupport',
+                        applicationId: 'e1b07f95-6ab6-4551-8e32-df3bdf3b6060',
+                        applicationScope: 'OR.Folders OR.BackgroundTasks OR.TestSets OR.TestSetExecutions OR.TestSetSchedules OR.Settings.Read OR.Robots.Read OR.Machines.Read OR.Execution OR.Assets OR.Users.Read OR.Jobs OR.Monitoring',
+                        applicationSecret: 'OrchestratorConnection',
+                    ),
+                    filePath: '${WORKSPACE}\\deploy_assests.csv',
+                    folderName: 'Support',
+                    orchestratorAddress: 'https://alpha.uipath.com/',
+                    orchestratorTenant: 'DefaultTenant',
+                    traceLevel: 'Information'
+                )
+            }
+        }
+        
+        stage('Clear output folder') {
+            steps {
+                script {
+                    def folderToClear = 'Output'
+
+                    if (fileExists(folderToClear)) {
+                        dir(folderToClear) {
+                            deleteDir()
+                        }
+                        echo "Folder '${folderToClear}' cleared successfully."
+                    } else {
+                        echo "Folder '${folderToClear}' does not exist."
+                    }
+                }
+            }
+        }
+        
+        stage ('Pack') {
+            steps {
+                UiPathPack (
+                    credentials: ExternalApp (
+                        accountForApp: 'customersupport',
+                        applicationId: 'e1b07f95-6ab6-4551-8e32-df3bdf3b6060',
+                        applicationScope: 'OR.Folders OR.BackgroundTasks OR.TestSets OR.TestSetExecutions OR.TestSetSchedules OR.Settings.Read OR.Robots.Read OR.Machines.Read OR.Execution OR.Assets OR.Users.Read OR.Jobs OR.Monitoring',
+                        applicationSecret: 'OrchestratorConnection',
+                    ),
+                    orchestratorAddress: 'https://alpha.uipath.com/',
+                    orchestratorTenant: 'DefaultTenant',
+                    outputPath: '${WORKSPACE}\\Output',
+                    projectJsonPath: '${WORKSPACE}\\Win_withTests_CS\\project.json',
+                    runWorkflowAnalysis: true,
+                    traceLevel: 'Information',
+                    useOrchestrator: true,
+                    version: AutoVersion()
+                )
+            }
+        }
+        
+        stage ('Run Tests') {
+            steps {
+                UiPathTest (
+                    attachRobotLogs: true,
+                    credentials: ExternalApp (
+                        accountForApp: 'customersupport',
+                        applicationId: 'e1b07f95-6ab6-4551-8e32-df3bdf3b6060',
+                        applicationScope: 'OR.Folders OR.BackgroundTasks OR.TestSets OR.TestSetExecutions OR.TestSetSchedules OR.Settings.Read OR.Robots.Read OR.Machines.Read OR.Execution OR.Assets OR.Users.Read OR.Jobs OR.Monitoring',
+                        applicationSecret: 'OrchestratorConnection',
+                    ),
+                    folderName: 'Support',
+                    orchestratorAddress: 'https://alpha.uipath.com/',
+                    orchestratorTenant: 'DefaultTenant',
+                    parametersFilePath: '',
+                    testResultsOutputPath: '',
+                    testTarget: TestProject (
+                        environments: '',
+                        testProjectPath: '${WORKSPACE}\\Win_withTests_CS\\project.json'
+                    ),
+                    traceLevel: 'Information',
+                    timeout: 7200
+                )
+            }
+        }
+        
+        stage ('Deploy') {
+            steps {
+                UiPathDeploy (
+                    createProcess: true,
+                    credentials: ExternalApp (
+                        accountForApp: 'customersupport',
+                        applicationId: 'e1b07f95-6ab6-4551-8e32-df3bdf3b6060',
+                        applicationScope: 'OR.Folders OR.BackgroundTasks OR.TestSets OR.TestSetExecutions OR.TestSetSchedules OR.Settings.Read OR.Robots.Read OR.Machines.Read OR.Execution OR.Assets OR.Users.Read OR.Jobs OR.Monitoring',
+                        applicationSecret: 'OrchestratorConnection',
+                    ),
+                    entryPointPaths: 'Main.xaml',
+                    environments: '',
+                    folderName: 'Support',
+                    orchestratorAddress: 'https://alpha.uipath.com/',
+                    orchestratorTenant: 'DefaultTenant',
+                    packagePath: '${WORKSPACE}\\Output',
+                    traceLevel: 'Information'
+                )
+            }
+        }
+        
+        stage ('Run Job') {
+            steps {
+                UiPathRunJob (
+                    credentials: ExternalApp (
+                        accountForApp: 'customersupport',
+                        applicationId: 'e1b07f95-6ab6-4551-8e32-df3bdf3b6060',
+                        applicationScope: 'OR.Folders OR.BackgroundTasks OR.TestSets OR.TestSetExecutions OR.TestSetSchedules OR.Settings.Read OR.Robots.Read OR.Machines.Read OR.Execution OR.Assets OR.Users.Read OR.Jobs OR.Monitoring',
+                        applicationSecret: 'OrchestratorConnection',
+                    ),
+                    failWhenJobFails: true,
+                    folderName: 'Support',
+                    jobType: Unattended(),
+                    orchestratorAddress: 'https://alpha.uipath.com/',
+                    orchestratorTenant: 'DefaultTenant',
+                    parametersFilePath: '',
+                    priority: 'Low',
+                    processName: 'Win_withTests_CS_Main.xaml',
+                    strategy: Dynamically (
+                        jobsCount: 2,
+                        machine: '',
+                        user: ''
+                    ),
+                    traceLevel: 'Information',
+                    waitForJobCompletion: true
+                )
+            }
+        }
+        
+        stage ('Delete Assets') {
+            steps {
+                UiPathAssets (
+                    assetsAction: DeleteAssets(),
+                    credentials: ExternalApp (
+                        accountForApp: 'customersupport',
+                        applicationId: 'e1b07f95-6ab6-4551-8e32-df3bdf3b6060',
+                        applicationScope: 'OR.Folders OR.BackgroundTasks OR.TestSets OR.TestSetExecutions OR.TestSetSchedules OR.Settings.Read OR.Robots.Read OR.Machines.Read OR.Execution OR.Assets OR.Users.Read OR.Jobs OR.Monitoring',
+                        applicationSecret: 'OrchestratorConnection',
+                    ),
+                    filePath: '${WORKSPACE}\\deploy_assests.csv',
+                    folderName: 'Support',
+                    orchestratorAddress: 'https://alpha.uipath.com/',
+                    orchestratorTenant: 'DefaultTenant',
+                    traceLevel: 'Information'
+                )
+            }
+        }
+        
+    }
+}

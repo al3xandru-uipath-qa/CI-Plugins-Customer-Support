@@ -1,0 +1,22 @@
+{
+	"type": "DeployOptions",
+	"options": {
+                "packagesPath": "",
+                "createProcess": true,
+		"entryPointPaths": [ "Main.xaml" ],
+                "environments": [],
+		
+                
+		"orchestratorUrl": "https://alpha.uipath.com/",
+                "accountForApp": "customersupport",
+                "orchestratorTenant": "Default",
+                "organizationUnit": "Support",
+                
+		"applicationId": "e1b07f95-6ab6-4551-8e32-df3bdf3b6060",
+		"applicationSecret": "",
+		"applicationScope": "OR.Folders OR.BackgroundTasks OR.TestSets OR.TestSetExecutions OR.TestSetSchedules OR.Settings.Read OR.Robots.Read OR.Machines.Read OR.Execution OR.Assets OR.Users.Read OR.Jobs OR.Monitoring",
+		
+                "language": "en-US",
+                "traceLevel": "None"
+	}
+}
