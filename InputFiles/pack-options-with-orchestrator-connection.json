@@ -1,0 +1,21 @@
+{
+	"type": "PackOptions",
+	"options": {
+		"projectPath": "PLACEHOLDER\\CI-Plugins-Customer-Support\\AutomationProjects\\Windows\\VB\\RoboticEnterpriseFramework\\project.json",
+		"outputType": "Process",
+		"autoVersion": true,
+		"destinationFolder": "PLACEHOLDER\\CI-Plugins-Customer-Support\\Output",
+		
+		"orchestratorUrl": "https://alpha.uipath.com/",
+		"accountForApp": "customersupport",
+		"orchestratorTenant": "DefaultTenant",
+		"organizationUnit": "Support",
+                
+		"applicationId": "e1b07f95-6ab6-4551-8e32-df3bdf3b6060",
+		"applicationSecret": "",
+		"applicationScope": "OR.Folders OR.BackgroundTasks OR.TestSets OR.TestSetExecutions OR.TestSetSchedules OR.Settings.Read OR.Robots.Read OR.Machines.Read OR.Execution OR.Assets OR.Users.Read OR.Jobs OR.Monitoring",
+
+		"language": "en-US",
+		"traceLevel": "Information"
+	}
+}
