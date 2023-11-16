@@ -9,7 +9,8 @@ pipeline {
                 git (
                     changelog: false,
                     poll: false,
-                    url: 'https://github.com/al3xandru-uipath-qa/CI-Plugins-Customer-Support.git'
+                    url: 'https://github.com/al3xandru-uipath-qa/CI-Plugins-Customer-Support.git',
+                    branch: 'investigate/system-xaml-not-found'
                 )
             }
         }
@@ -17,7 +18,7 @@ pipeline {
         stage('Install Platform') {
             steps {
                 UiPathInstallPlatform (
-                    cliNupkgPath: '${WORKSPACE}\\nupkg\\UiPath.CLI.Windows.23.10.0-dev.nupkg',
+                    cliNupkgPath: '${WORKSPACE}\\uipcli\\UiPath.CLI.Windows.23.6.8713.29787.nupkg',
                     cliVersion: 'WIN_23.2.8467.25277',
                     traceLevel: 'Information'
                 )
@@ -28,16 +29,16 @@ pipeline {
             steps {
                 UiPathAssets (
                     assetsAction: DeployAssets(),
-                    credentials: ExternalApp (
-                        accountForApp: 'customersupport',
-                        applicationId: 'e1b07f95-6ab6-4551-8e32-df3bdf3b6060',
+                    credentials: ExternalApp(
+                        applicationId: '44c99aa6-bdcb-4d7a-ac05-c0d78bf36bd9', 
                         applicationScope: 'OR.Folders OR.BackgroundTasks OR.TestSets OR.TestSetExecutions OR.TestSetSchedules OR.Settings.Read OR.Robots.Read OR.Machines.Read OR.Execution OR.Assets OR.Users.Read OR.Jobs OR.Monitoring',
-                        applicationSecret: 'OrchestratorConnection',
+                        applicationSecret: '2304ORCH_STD',
+                        identityUrl: 'https://orch-23-4.westeurope.cloudapp.azure.com/identity',
                     ),
-                    filePath: '${WORKSPACE}\\deploy_assests.csv',
-                    folderName: 'Support',
-                    orchestratorAddress: 'https://alpha.uipath.com/',
-                    orchestratorTenant: 'DefaultTenant',
+                    filePath: '${WORKSPACE}\\Assets\\assests.csv',
+                    folderName: 'CIPlugins',
+                    orchestratorAddress: 'https://orch-23-4.westeurope.cloudapp.azure.com/',
+                    orchestratorTenant: 'ciplugins',
                     traceLevel: 'Information'
                 )
             }
@@ -63,16 +64,16 @@ pipeline {
         stage ('Pack') {
             steps {
                 UiPathPack (
-                    credentials: ExternalApp (
-                        accountForApp: 'customersupport',
-                        applicationId: 'e1b07f95-6ab6-4551-8e32-df3bdf3b6060',
+                    credentials: ExternalApp(
+                        applicationId: '44c99aa6-bdcb-4d7a-ac05-c0d78bf36bd9', 
                         applicationScope: 'OR.Folders OR.BackgroundTasks OR.TestSets OR.TestSetExecutions OR.TestSetSchedules OR.Settings.Read OR.Robots.Read OR.Machines.Read OR.Execution OR.Assets OR.Users.Read OR.Jobs OR.Monitoring',
-                        applicationSecret: 'OrchestratorConnection',
+                        applicationSecret: '2304ORCH_STD',
+                        identityUrl: 'https://orch-23-4.westeurope.cloudapp.azure.com/identity',
                     ),
-                    orchestratorAddress: 'https://alpha.uipath.com/',
-                    orchestratorTenant: 'DefaultTenant',
+                    orchestratorAddress: 'https://orch-23-4.westeurope.cloudapp.azure.com/',
+                    orchestratorTenant: 'ciplugins',
                     outputPath: '${WORKSPACE}\\Output',
-                    projectJsonPath: '${WORKSPACE}\\Win_withTests_CS\\project.json',
+                    projectJsonPath: '${WORKSPACE}\\AutomationProjects\\CrossPlatform\\VB\\TestCase_CrossPlatform_VB\\project.json',
                     runWorkflowAnalysis: true,
                     traceLevel: 'Information',
                     useOrchestrator: true,
@@ -85,20 +86,20 @@ pipeline {
             steps {
                 UiPathTest (
                     attachRobotLogs: true,
-                    credentials: ExternalApp (
-                        accountForApp: 'customersupport',
-                        applicationId: 'e1b07f95-6ab6-4551-8e32-df3bdf3b6060',
+                    credentials: ExternalApp(
+                        applicationId: '44c99aa6-bdcb-4d7a-ac05-c0d78bf36bd9', 
                         applicationScope: 'OR.Folders OR.BackgroundTasks OR.TestSets OR.TestSetExecutions OR.TestSetSchedules OR.Settings.Read OR.Robots.Read OR.Machines.Read OR.Execution OR.Assets OR.Users.Read OR.Jobs OR.Monitoring',
-                        applicationSecret: 'OrchestratorConnection',
+                        applicationSecret: '2304ORCH_STD',
+                        identityUrl: 'https://orch-23-4.westeurope.cloudapp.azure.com/identity',
                     ),
-                    folderName: 'Support',
-                    orchestratorAddress: 'https://alpha.uipath.com/',
-                    orchestratorTenant: 'DefaultTenant',
+                    folderName: 'CIPlugins',
+                    orchestratorAddress: 'https://orch-23-4.westeurope.cloudapp.azure.com/',
+                    orchestratorTenant: 'ciplugins',
                     parametersFilePath: '',
                     testResultsOutputPath: '',
                     testTarget: TestProject (
                         environments: '',
-                        testProjectPath: '${WORKSPACE}\\Win_withTests_CS\\project.json'
+                        testProjectPath: '${WORKSPACE}\\AutomationProjects\\CrossPlatform\\VB\\TestCase_CrossPlatform_VB\\project.json'
                     ),
                     traceLevel: 'Information',
                     timeout: 7200
@@ -110,17 +111,17 @@ pipeline {
             steps {
                 UiPathDeploy (
                     createProcess: true,
-                    credentials: ExternalApp (
-                        accountForApp: 'customersupport',
-                        applicationId: 'e1b07f95-6ab6-4551-8e32-df3bdf3b6060',
+                    credentials: ExternalApp(
+                        applicationId: '44c99aa6-bdcb-4d7a-ac05-c0d78bf36bd9', 
                         applicationScope: 'OR.Folders OR.BackgroundTasks OR.TestSets OR.TestSetExecutions OR.TestSetSchedules OR.Settings.Read OR.Robots.Read OR.Machines.Read OR.Execution OR.Assets OR.Users.Read OR.Jobs OR.Monitoring',
-                        applicationSecret: 'OrchestratorConnection',
+                        applicationSecret: '2304ORCH_STD',
+                        identityUrl: 'https://orch-23-4.westeurope.cloudapp.azure.com/identity',
                     ),
                     entryPointPaths: 'Main.xaml',
                     environments: '',
-                    folderName: 'Support',
-                    orchestratorAddress: 'https://alpha.uipath.com/',
-                    orchestratorTenant: 'DefaultTenant',
+                    folderName: 'CIPlugins',
+                    orchestratorAddress: 'https://orch-23-4.westeurope.cloudapp.azure.com/',
+                    orchestratorTenant: 'ciplugins',
                     packagePath: '${WORKSPACE}\\Output',
                     traceLevel: 'Information'
                 )
@@ -130,22 +131,22 @@ pipeline {
         stage ('Run Job') {
             steps {
                 UiPathRunJob (
-                    credentials: ExternalApp (
-                        accountForApp: 'customersupport',
-                        applicationId: 'e1b07f95-6ab6-4551-8e32-df3bdf3b6060',
+                    credentials: ExternalApp(
+                        applicationId: '44c99aa6-bdcb-4d7a-ac05-c0d78bf36bd9', 
                         applicationScope: 'OR.Folders OR.BackgroundTasks OR.TestSets OR.TestSetExecutions OR.TestSetSchedules OR.Settings.Read OR.Robots.Read OR.Machines.Read OR.Execution OR.Assets OR.Users.Read OR.Jobs OR.Monitoring',
-                        applicationSecret: 'OrchestratorConnection',
+                        applicationSecret: '2304ORCH_STD',
+                        identityUrl: 'https://orch-23-4.westeurope.cloudapp.azure.com/identity',
                     ),
                     failWhenJobFails: true,
-                    folderName: 'Support',
+                    folderName: 'CIPlugins',
                     jobType: Unattended(),
-                    orchestratorAddress: 'https://alpha.uipath.com/',
-                    orchestratorTenant: 'DefaultTenant',
+                    orchestratorAddress: 'https://orch-23-4.westeurope.cloudapp.azure.com/',
+                    orchestratorTenant: 'ciplugins',
                     parametersFilePath: '',
                     priority: 'Low',
-                    processName: 'Win_withTests_CS_Main.xaml',
+                    processName: 'TestCase_CrossPlatform_VB_Main.xaml',
                     strategy: Dynamically (
-                        jobsCount: 2,
+                        jobsCount: 1,
                         machine: '',
                         user: ''
                     ),
@@ -154,25 +155,5 @@ pipeline {
                 )
             }
         }
-        
-        stage ('Delete Assets') {
-            steps {
-                UiPathAssets (
-                    assetsAction: DeleteAssets(),
-                    credentials: ExternalApp (
-                        accountForApp: 'customersupport',
-                        applicationId: 'e1b07f95-6ab6-4551-8e32-df3bdf3b6060',
-                        applicationScope: 'OR.Folders OR.BackgroundTasks OR.TestSets OR.TestSetExecutions OR.TestSetSchedules OR.Settings.Read OR.Robots.Read OR.Machines.Read OR.Execution OR.Assets OR.Users.Read OR.Jobs OR.Monitoring',
-                        applicationSecret: 'OrchestratorConnection',
-                    ),
-                    filePath: '${WORKSPACE}\\deploy_assests.csv',
-                    folderName: 'Support',
-                    orchestratorAddress: 'https://alpha.uipath.com/',
-                    orchestratorTenant: 'DefaultTenant',
-                    traceLevel: 'Information'
-                )
-            }
-        }
-        
     }
 }

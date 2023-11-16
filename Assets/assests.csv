@@ -1,1 +1,2 @@
-my_integer,integer,123
+name,type,value
+TestAsset,integer,1
