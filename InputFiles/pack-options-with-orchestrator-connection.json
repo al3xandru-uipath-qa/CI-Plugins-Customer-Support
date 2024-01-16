@@ -1,19 +1,18 @@
 {
 	"type": "PackOptions",
 	"options": {
-		"projectPath": "PLACEHOLDER\\CI-Plugins-Customer-Support\\AutomationProjects\\Windows\\VB\\RoboticEnterpriseFramework\\project.json",
+		"projectPath": "C:\\Users\\alexandru.groza\\CiPlugins\\repos\\CI-Plugins-Customer-Support\\AutomationProjects\\Windows\\VB\\RoboticEnterpriseFramework\\project.json",
 		"outputType": "Process",
 		"autoVersion": true,
-		"destinationFolder": "PLACEHOLDER\\CI-Plugins-Customer-Support\\Output",
+		"destinationFolder": "C:\\Users\\alexandru.groza\\CiPlugins\\repos\\CI-Plugins-Customer-Support\\Output",
 		
-		"orchestratorUrl": "https://alpha.uipath.com/",
-		"accountForApp": "customersupport",
-		"orchestratorTenant": "DefaultTenant",
-		"organizationUnit": "Support",
-                
-		"applicationId": "e1b07f95-6ab6-4551-8e32-df3bdf3b6060",
-		"applicationSecret": "",
-		"applicationScope": "OR.Folders OR.BackgroundTasks OR.TestSets OR.TestSetExecutions OR.TestSetSchedules OR.Settings.Read OR.Robots.Read OR.Machines.Read OR.Execution OR.Assets OR.Users.Read OR.Jobs OR.Monitoring",
+		"orchestratorUrl": "https://orch-23-4.westeurope.cloudapp.azure.com/",
+		"authorizationUrl": "https://orch-23-4.westeurope.cloudapp.azure.com/identity",
+		"orchestratorTenant": "ciplugins",
+		"organizationUnit": "CIPlugins",
+
+		"username": "admin",
+		"password": "Admin@123456",
 
 		"language": "en-US",
 		"traceLevel": "Information"

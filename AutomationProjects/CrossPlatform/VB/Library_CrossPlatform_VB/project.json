@@ -1,6 +1,5 @@
 {
   "name": "Library_CrossPlatform_VB",
-  "projectId": "be928884-05d9-4648-be94-ec555556232e",
   "description": "cli e2e",
   "main": "NewActivity.xaml",
   "dependencies": {
