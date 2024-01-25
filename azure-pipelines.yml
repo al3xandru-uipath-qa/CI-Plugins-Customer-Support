@@ -18,6 +18,6 @@ steps:
   inputs:
     versionType: 'AutoVersion'
     projectJsonPath: 'AutomationProjects/Windows/VB/SimpleLog_Windows_VB/project.json'
-    outputPath: '$(Build.ArtifactStagingDirectory)\Output'
+    outputPath: '$(Build.ArtifactStagingDirectory)/Output'
     runWorkflowAnalysis: true
     traceLevel: 'Information'
