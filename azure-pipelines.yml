@@ -18,12 +18,12 @@ steps:
   inputs:
     versionType: 'AutoVersion'
     projectJsonPath: 'AutomationProjects/CrossPlatform/VB/TestCase_CrossPlatform_VB/project.json'
-    enablePackageMetadata: true
-    repositoryUrl: 'asdf'
-    repositoryCommit: 'asdf'
-    repositoryBranch: 'asdf'
-    repositoryType: 'sadf'
-    projectUrl: 'sadf'
     outputPath: '$(Build.ArtifactStagingDirectory)/Output'
     runWorkflowAnalysis: true
     traceLevel: 'Information'
+
+- task: UiPathTest@4
+  inputs:
+    testTarget: 'TestProject'
+    orchestratorConnection: 'CI Plugins connection'
+    testProjectPath: 'AutomationProjects/CrossPlatform/VB/TestCase_CrossPlatform_VB/project.json'
