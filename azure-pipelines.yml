@@ -10,23 +10,13 @@ pool:
   vmImage: windows-latest
 
 steps:
-  - task: UiPathRunJob-preview@4
-    inputs:
-      orchestratorConnection: 'Staging_Preview_SC'
-      processName: 'asdf'
-      folderName: 'asdf'
-      timeout: '2901242'
-# - task: UiPathInstallPlatform@4
-#   inputs:
-#     cliVersion: 'WIN_23.6.8581.19168'
-
-# - task: UiPathPack@4
-#   inputs:
-#     versionType: 'AutoVersion'
-#     projectJsonPath: 'AutomationProjects/CrossPlatform/VB/TestCase_CrossPlatform_VB/project.json'
-#     outputPath: '$(Build.ArtifactStagingDirectory)/Output'
-#     runWorkflowAnalysis: true
-#     traceLevel: 'Information'
+- task: UiPathPack@4
+  inputs:
+    versionType: 'AutoVersion'
+    projectJsonPath: 'AutomationProjects/CrossPlatform/VB/TestCase_CrossPlatform_VB/project.json'
+    outputPath: '$(Build.ArtifactStagingDirectory)/Output'
+    runWorkflowAnalysis: true
+    traceLevel: 'Information'
 
 # - task: UiPathTest@4
 #   inputs:
