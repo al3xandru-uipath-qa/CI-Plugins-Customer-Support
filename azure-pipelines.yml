@@ -14,6 +14,7 @@ steps:
   inputs:
     versionType: 'AutoVersion'
     projectJsonPath: 'AutomationProjects/CrossPlatform/VB/TestCase_CrossPlatform_VB/project.json'
+    orchestratorConnection: 'CI Plugins connection'
     outputPath: '$(Build.ArtifactStagingDirectory)/Output'
     runWorkflowAnalysis: true
     traceLevel: 'Information'
