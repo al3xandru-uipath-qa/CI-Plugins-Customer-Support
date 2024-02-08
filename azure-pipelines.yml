@@ -9,11 +9,23 @@ trigger:
 pool:
   vmImage: windows-latest
 
-steps:
+stages:
+- stage: Dummy stage
+  jobs:
+    - job: Dummy job
+      steps:
+        - task: PowerShell@2
+          inputs:
+            targetType: 'inline'
+            script: Write-Host "log"
 
-- task: UiPathTest@4
-  inputs:
-    testTarget: 'TestProject'
-    orchestratorConnection: 'CI Plugins connection'
-    testProjectPath: 'AutomationProjects/CrossPlatform/VB/TestCase_CrossPlatform_VB/project.json'
-    folderName: 'ASDF'
+- stage: Test stage
+  jobs:
+    - job: Test job
+      steps:
+        - task: UiPathTest@4
+          inputs:
+            testTarget: 'TestProject'
+            orchestratorConnection: 'CI Plugins connection'
+            testProjectPath: 'AutomationProjects/CrossPlatform/VB/TestCase_CrossPlatform_VB/project.json'
+            folderName: 'ASDF'
