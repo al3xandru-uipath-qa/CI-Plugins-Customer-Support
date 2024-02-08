@@ -10,18 +10,10 @@ pool:
   vmImage: windows-latest
 
 steps:
-- task: UiPathPack@4
-  inputs:
-    versionType: 'AutoVersion'
-    projectJsonPath: 'AutomationProjects/CrossPlatform/VB/TestCase_CrossPlatform_VB/project.json'
-    orchestratorConnection: 'CI Plugins connection'
-    outputPath: '$(Build.ArtifactStagingDirectory)/Output'
-    runWorkflowAnalysis: true
-    traceLevel: 'Information'
 
-# - task: UiPathTest@4
-#   inputs:
-#     testTarget: 'TestProject'
-#     orchestratorConnection: 'CI Plugins connection'
-#     testProjectPath: 'AutomationProjects/CrossPlatform/VB/TestCase_CrossPlatform_VB/project.json'
-#     folderName: 'ASDF'
+- task: UiPathTest@4
+  inputs:
+    testTarget: 'TestProject'
+    orchestratorConnection: 'CI Plugins connection'
+    testProjectPath: 'AutomationProjects/CrossPlatform/VB/TestCase_CrossPlatform_VB/project.json'
+    folderName: 'ASDF'
