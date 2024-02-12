@@ -1,0 +1,191 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1200,898.4" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uibi="http://schemas.uipath.com/workflow/infrastructure/baf/uibi" xmlns:uiisi="http://schemas.uipath.com/workflow/infrastructure/is/uiisi" xmlns:ujia="clr-namespace:UiPath.Jira.IntegrationService.Activities;assembly=UiPath.Jira.IntegrationService.Activities" xmlns:ujic="clr-namespace:UiPath.Jira.IntegrationService.Client;assembly=UiPath.Jira.IntegrationService" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.IntegrationService.Infrastructure.CEQL</x:String>
+      <x:String>UiPath.BAF.Infrastructure.Entity</x:String>
+      <x:String>UiPath.IntegrationService.Infrastructure.Descriptor</x:String>
+      <x:String>UiPath.BAF.Infrastructure.Enums</x:String>
+      <x:String>UiPath.BAF.Infrastructure.Telemetry</x:String>
+      <x:String>UiPath.BAF.Infrastructure</x:String>
+      <x:String>UiPath.BAF.Infrastructure.Connection</x:String>
+      <x:String>UiPath.Jira.IntegrationService.Activities</x:String>
+      <x:String>UiPath.IntegrationCore.Activities</x:String>
+      <x:String>UiPath.BAF.Activities</x:String>
+      <x:String>UiPath.BAF.Infrastructure.Contracts</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.Jira.IntegrationService.Client</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.IntegrationService.Infrastructure</AssemblyReference>
+      <AssemblyReference>UiPath.BAF.Infrastructure</AssemblyReference>
+      <AssemblyReference>UiPath.Jira.IntegrationService.Activities</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>UiPath.Jira.IntegrationService</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="512,499.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="ujic:Search_user" Name="list" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ujia:FindUsersbyEmail ActivityInstanceId="070d79a6-4a5d-42b3-b798-a334a2de23e1" BindingsVersion="2.1" BusinessEntityName="user" ConfiguredBusinessEntity="search_user" ConnectionId="93560311-6c4c-47f0-9110-413db2b63b25" Connector="uipath-atlassian-jira" CrudOperation="Search" DesignConnectionEnabled="True" DisplayName="Find User by Email Address or Display Name" sap:VirtualizedContainerService.HintSize="449.6,204.8" sap2010:WorkflowViewState.IdRef="FindUsersbyEmail_2" UseRawCEQL="False">
+      <ujia:FindUsersbyEmail.BusinessEntity>
+        <uibi:BusinessEntity Metadata="{x:Reference __ReferenceID5}" Name="search_user">
+          <uibi:BusinessEntity.AllFields>
+            <scg:List x:TypeArguments="uibi:EntityField" Capacity="7">
+              <x:Reference>__ReferenceID0</x:Reference>
+              <x:Reference>__ReferenceID1</x:Reference>
+              <x:Reference>__ReferenceID2</x:Reference>
+              <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" DataType="String" Description="The token for the next page of records. Use this token to iterate through the pages until a empty list is returned." DisplayName="Next Page Token" FormDataType="ExpressionTextBox" IsChildEntityField="False" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="False" IsIdField="False" IsMandatory="False" IsParameter="True" IsPriority="False" IsSelected="False" Location="Undefined" Name="nextPage" ShouldFilterOnChange="False" />
+              <x:Reference>__ReferenceID3</x:Reference>
+              <x:Reference>__ReferenceID4</x:Reference>
+              <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="Out" ArgumentType="x:String" DataType="String" Description="The token for the next page of records. Use this token to iterate through the pages until a empty list is returned." DisplayName="Next Page Token" FormDataType="ExpressionTextBox" IsChildEntityField="False" IsCustomField="False" IsDefault="False" IsDeletable="False" IsHidden="False" IsIdField="False" IsMandatory="False" IsPriority="False" IsSelected="False" Location="Header" Name="nextPageTokenFromHeader" ShouldFilterOnChange="False" />
+            </scg:List>
+          </uibi:BusinessEntity.AllFields>
+          <uibi:BusinessEntity.EntityMetadata>
+            <uibi:EntityMetadata DisplayName="user" EligibleOperations="64" IsCustomEntity="False" Name="search_user">
+              <uibi:EntityMetadata.Metadata>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object" x:Name="__ReferenceID5">
+                  <x:String x:Key="Object">search_user</x:String>
+                  <x:String x:Key="Client">UiPath.Jira.IntegrationService.Client.Search_userAPIClient</x:String>
+                  <x:String x:Key="Operation">GetSearch_user</x:String>
+                  <x:String x:Key="Path">/search_user</x:String>
+                </scg:Dictionary>
+              </uibi:EntityMetadata.Metadata>
+            </uibi:EntityMetadata>
+          </uibi:BusinessEntity.EntityMetadata>
+          <uibi:BusinessEntity.SearchableFields>
+            <scg:List x:TypeArguments="uibi:SearchableField" Capacity="0" />
+          </uibi:BusinessEntity.SearchableFields>
+          <uibi:BusinessEntity.SearchableJoins>
+            <scg:List x:TypeArguments="x:String" Capacity="0" />
+          </uibi:BusinessEntity.SearchableJoins>
+          <uibi:BusinessEntity.SelectedFields>
+            <scg:List x:TypeArguments="uibi:EntityField" Capacity="8">
+              <x:Reference>__ReferenceID0</x:Reference>
+              <x:Reference>__ReferenceID1</x:Reference>
+              <x:Reference>__ReferenceID2</x:Reference>
+              <x:Reference>__ReferenceID3</x:Reference>
+              <x:Reference>__ReferenceID4</x:Reference>
+            </scg:List>
+          </uibi:BusinessEntity.SelectedFields>
+          <uibi:BusinessEntity.TelemetryProperties>
+            <scg:Dictionary x:TypeArguments="uibi:TelemetryGroup, scg:IDictionary(x:String, x:String)" />
+          </uibi:BusinessEntity.TelemetryProperties>
+        </uibi:BusinessEntity>
+      </ujia:FindUsersbyEmail.BusinessEntity>
+      <ujia:FindUsersbyEmail.CachedLookupValues>
+        <scg:Dictionary x:TypeArguments="x:String, scg:List(uiisi:LookupValue)" />
+      </ujia:FindUsersbyEmail.CachedLookupValues>
+      <ujia:FindUsersbyEmail.DesignConnectionRequest>
+        <uiisi:ConnectionParameters AuthType="ElementInstance" ConnectionId="93560311-6c4c-47f0-9110-413db2b63b25" ConnectionName="alexandru.groza@uipath.com-uipath" ConnectorKey="uipath-atlassian-jira">
+          <uiisi:ConnectionParameters.TelemetryInfo>
+            <uiisi:TelemetryInfo ActivityPack="UiPath.Jira.IntegrationService.Activities" ActivityPackVersion="6.1.0" Source="StudioDesktop" />
+          </uiisi:ConnectionParameters.TelemetryInfo>
+        </uiisi:ConnectionParameters>
+      </ujia:FindUsersbyEmail.DesignConnectionRequest>
+      <ujia:FindUsersbyEmail.SelectedFields>
+        <scg:List x:TypeArguments="uibi:EntityField" Capacity="5">
+          <uiisi:OperationEntityField x:TypeArguments="x:Int32" x:Name="__ReferenceID0" ArgumentDirection="In" ArgumentType="x:Int32" DataType="Int32" Description="The maximum number of records to return." DisplayName="Max records" FormDataType="ExpressionTextBox" InArgumentValue="1" IsChildEntityField="False" IsCustomField="False" IsDefault="False" IsDeletable="False" IsHidden="False" IsIdField="False" IsMandatory="True" IsPriority="False" IsSelected="False" Location="Undefined" Name="maximumRecordsReturned" ShouldFilterOnChange="False">
+            <uiisi:OperationEntityField.ArgumentValue>
+              <InArgument x:TypeArguments="x:Int32">1</InArgument>
+            </uiisi:OperationEntityField.ArgumentValue>
+            <uiisi:OperationEntityField.Value>
+              <Literal x:TypeArguments="x:Int32">1</Literal>
+            </uiisi:OperationEntityField.Value>
+          </uiisi:OperationEntityField>
+          <uiisi:OperationEntityField x:TypeArguments="x:String" x:Name="__ReferenceID1" ArgumentDirection="In" ArgumentType="x:String" DataType="String" Description="The email or display name of the user" DisplayName="Username or display name" FormDataType="ExpressionTextBox" InArgumentValue="alexandru.groza@uipath.com" IsChildEntityField="False" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="False" IsIdField="False" IsMandatory="True" IsParameter="True" IsPriority="False" IsSelected="False" Location="Undefined" Name="username" ShouldFilterOnChange="False">
+            <uiisi:OperationEntityField.ArgumentValue>
+              <InArgument x:TypeArguments="x:String">alexandru.groza@uipath.com</InArgument>
+            </uiisi:OperationEntityField.ArgumentValue>
+            <uiisi:OperationEntityField.Value>
+              <Literal x:TypeArguments="x:String">alexandru.groza@uipath.com</Literal>
+            </uiisi:OperationEntityField.Value>
+          </uiisi:OperationEntityField>
+          <uiisi:OperationEntityField x:TypeArguments="x:Int32" x:Name="__ReferenceID2" ArgumentDirection="In" ArgumentType="x:Int32" DataType="Int32" Description="The maximum number of items to return per page." DisplayName="Page size" FormDataType="ExpressionTextBox" InArgumentValue="50" IsChildEntityField="False" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="False" IsIdField="False" IsMandatory="False" IsParameter="True" IsPriority="False" IsSelected="False" Location="Undefined" Name="pageSize" ShouldFilterOnChange="False">
+            <uiisi:OperationEntityField.ArgumentValue>
+              <InArgument x:TypeArguments="x:Int32">50</InArgument>
+            </uiisi:OperationEntityField.ArgumentValue>
+            <uiisi:OperationEntityField.Value>
+              <Literal x:TypeArguments="x:Int32">50</Literal>
+            </uiisi:OperationEntityField.Value>
+          </uiisi:OperationEntityField>
+          <uiisi:OperationEntityField x:TypeArguments="ujic:Search_user" x:Name="__ReferenceID3" ArgumentDirection="Out" ArgumentType="ujic:Search_user" DataType="Search_user" Description="The first record returned." DisplayName="First user Record" FormDataType="ExpressionTextBox" IsChildEntityField="False" IsCustomField="False" IsDefault="False" IsDeletable="False" IsHidden="False" IsIdField="False" IsMandatory="False" IsPriority="False" IsSelected="False" Location="Body" Name="findFirstRecordResultField" OutArgumentValue="[list]" ShouldFilterOnChange="False">
+            <uiisi:OperationEntityField.ArgumentValue>
+              <OutArgument x:TypeArguments="ujic:Search_user">[list]</OutArgument>
+            </uiisi:OperationEntityField.ArgumentValue>
+            <uiisi:OperationEntityField.Value>
+              <VisualBasicReference x:TypeArguments="ujic:Search_user">[list]</VisualBasicReference>
+            </uiisi:OperationEntityField.Value>
+          </uiisi:OperationEntityField>
+          <uiisi:OperationEntityField x:TypeArguments="ujic:Search_user[]" x:Name="__ReferenceID4" ArgumentDirection="Out" ArgumentType="ujic:Search_user[]" DataType="Search_user[]" Description="The user object returned." DisplayName="Response" FormDataType="ExpressionTextBox" IsChildEntityField="False" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="False" IsIdField="False" IsMandatory="False" IsPriority="False" IsSelected="False" Location="Undefined" Name="Response" ShouldFilterOnChange="False" />
+        </scg:List>
+      </ujia:FindUsersbyEmail.SelectedFields>
+      <ujia:FindUsersbyEmail.TelemetryProperties>
+        <scg:Dictionary x:TypeArguments="uibi:TelemetryGroup, scg:IDictionary(x:String, x:String)" />
+      </ujia:FindUsersbyEmail.TelemetryProperties>
+    </ujia:FindUsersbyEmail>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="449.6,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[list.DisplayName]" />
+  </Sequence>
+</Activity>
