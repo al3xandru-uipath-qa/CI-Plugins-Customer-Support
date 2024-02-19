@@ -20,3 +20,4 @@ stages:
             orchestratorConnection: 'CI Plugins connection'
             testProjectPath: 'AutomationProjects/CrossPlatform/VB/TestCase_CrossPlatform_VB/project.json'
             folderName: 'Pipelines'
+            traceLevel: 'Information'
