@@ -19,7 +19,9 @@
     {
       "Path": "TestCase.xaml",
       "SortBy": 0,
-      "VariablesSectionElementsOrder": [],
+      "VariablesSectionElementsOrder": [
+        "text&Sequence_1"
+      ],
       "ArgumentsSectionElementsOrder": [
         "flag"
       ],
