@@ -4,8 +4,7 @@
   "description": "cli e2e",
   "main": "Main.xaml",
   "dependencies": {
-    "Library_CrossPlatform_VB": "[1.0.2]",
-    "Library_CrossPlatform_VB.Library.Runtime": "[1.0.2]",
+    "Library_CrossPlatform_VB": "[1.0.4]",
     "UiPath.System.Activities": "[23.6.0-preview]"
   },
   "webServices": [],
@@ -42,7 +41,8 @@
       "ignoredFiles": []
     },
     "fileInfoCollection": [],
-    "modernBehavior": true
+    "modernBehavior": true,
+    "saveToCloud": false
   },
   "expressionLanguage": "VisualBasic",
   "entryPoints": [
