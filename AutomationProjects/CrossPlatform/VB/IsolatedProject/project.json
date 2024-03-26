@@ -1,7 +1,7 @@
 {
   "name": "IsolatedProject",
   "projectId": "eb66f2ed-66ce-419f-a63e-12f81f9c3078",
-  "description": "project exists only on isolated-branch",
+  "description": "project exists only on isolated-branch. Edit after creation.",
   "main": "Main.xaml",
   "dependencies": {
     "UiPath.System.Activities": "[23.10.2]",
