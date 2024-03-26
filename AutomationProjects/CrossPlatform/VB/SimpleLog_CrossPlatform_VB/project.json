@@ -1,7 +1,7 @@
 {
   "name": "SimpleLog_CrossPlatform_VB",
   "projectId": "435500e1-ced3-445a-9584-94ad4d215fd7",
-  "description": "Log a message. edit secondary branch.",
+  "description": "Log a message. edit from secondary branch 2nd time.",
   "main": "Main.xaml",
   "dependencies": {
     "UiPath.System.Activities": "[23.6.0-preview]"
