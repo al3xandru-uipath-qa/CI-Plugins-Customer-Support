@@ -18,15 +18,10 @@ stages:
           inputs:
             cliVersion: 'WIN_23.10.8753.32995'
         
-        - task: UseDotNet@2
-          inputs:
-            packageType: 'runtime'
-            version: '6.0.302'
-        
         - task: UiPathPack@4
           inputs:
             versionType: 'AutoVersion'
-            projectJsonPath: '/path/to/project.json'
-            orchestratorConnection: 'CI Plugins connection'
-            outputPath: '$(Build.ArtifactStagingDirectory)\Output'
+            projectJsonPath: '$(Build.SourcesDirectory)/AutomationProjects/CrossPlatform/VB/ProjectWithCustomLibraryFromOrchestrator_CrossPlatform_VB/project.json'
+            outputPath: '$(Build.ArtifactStagingDirectory)/Output'
             traceLevel: 'Information'
+
