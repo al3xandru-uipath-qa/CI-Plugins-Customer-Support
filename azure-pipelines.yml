@@ -18,10 +18,17 @@ stages:
           inputs:
             cliVersion: 'WIN_23.10.8753.32995'
         
+        - task: CopyFiles@2
+          inputs:
+            SourceFolder: '$(Build.SourcesDirectory)'
+            Contents: 'nuget.config'
+            TargetFolder: '$(Agent.ToolsDirectory)/uipcli'
+
         - task: UiPathPack@4
           inputs:
             versionType: 'AutoVersion'
             projectJsonPath: '$(Build.SourcesDirectory)/AutomationProjects/CrossPlatform/VB/ProjectWithCustomLibraryFromOrchestrator_CrossPlatform_VB/project.json'
             outputPath: '$(Build.ArtifactStagingDirectory)/Output'
             traceLevel: 'Information'
+
 
