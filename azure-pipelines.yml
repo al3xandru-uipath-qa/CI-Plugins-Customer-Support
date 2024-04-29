@@ -20,3 +20,4 @@ stages:
             packagesPath: 'AutomationProjects/CrossPlatform/VB/Library_CrossPlatform_VB/project.json'
             createProcess: false
             traceLevel: 'Information'
+            folderName: ''
