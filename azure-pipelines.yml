@@ -14,21 +14,9 @@ stages:
   jobs:
     - job: Demo
       steps:
-        - task: UiPathInstallPlatform@4
+        - task: UiPathDeploy@4
           inputs:
-            cliVersion: 'X_23.6.8581.19168'
-        
-        - task: CopyFiles@2
-          inputs:
-            SourceFolder: '$(Build.SourcesDirectory)'
-            Contents: 'nuget.config'
-            TargetFolder: '$(Agent.ToolsDirectory)/uipcli'
-
-        - task: UiPathPack@4
-          inputs:
-            versionType: 'AutoVersion'
-            projectJsonPath: '$(Build.SourcesDirectory)/AutomationProjects/CrossPlatform/VB/ProjectWithCustomLibraryFromOrchestrator_CrossPlatform_VB/project.json'
-            outputPath: '$(Build.ArtifactStagingDirectory)/Output'
+            orchestratorConnection: 'CI Plugins connection'
+            packagesPath: 'AutomationProjects/CrossPlatform/VB/Library_CrossPlatform_VB/project.json'
+            createProcess: false
             traceLevel: 'Information'
-
-
