@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KaBF0HOxVFPVMzKRc+/+H/CSjOYohok0f/10BqQWkbcGzEmHVPjlbNh92Kk6Ak8nHOIOT6iXgMx+bw+OTpk7kw==",
+  "dgSpecHash": "HIaPuE0a8fh8k74phVCO7trDTFn4Fpe9cgtns49/0ncaNhVk1FYtEx0LM1DLfHmmG3aPgNJ2kWLlQOWpLNZFfg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\alexandru.groza\\CiPlugins\\repos\\CI-Plugins-Customer-Support\\AutomationProjects\\CrossPlatform\\VB\\TestCase_CrossPlatform_VB\\.local\\",
+  "projectFilePath": "C:\\Users\\alexandru.groza\\hwtrgr\\CLI.Playground\\CI-Plugins-Customer-Support\\AutomationProjects\\CrossPlatform\\VB\\TestCase_CrossPlatform_VB\\.local\\",
   "expectedPackageFiles": [
     "C:\\Users\\alexandru.groza\\.nuget\\packages\\automapper\\9.0.0\\automapper.9.0.0.nupkg.sha512",
     "C:\\Users\\alexandru.groza\\.nuget\\packages\\csvhelper\\16.0.0\\csvhelper.16.0.0.nupkg.sha512",

@@ -6562,9 +6562,9 @@
     "restore": {
       "projectUniqueName": "TestCase_CrossPlatform_VB",
       "projectName": "TestCase_CrossPlatform_VB",
-      "projectPath": "C:\\Users\\alexandru.groza\\CiPlugins\\repos\\CI-Plugins-Customer-Support\\AutomationProjects\\CrossPlatform\\VB\\TestCase_CrossPlatform_VB\\.local",
+      "projectPath": "C:\\Users\\alexandru.groza\\hwtrgr\\CLI.Playground\\CI-Plugins-Customer-Support\\AutomationProjects\\CrossPlatform\\VB\\TestCase_CrossPlatform_VB\\.local",
       "packagesPath": "C:\\Users\\alexandru.groza\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\alexandru.groza\\CiPlugins\\repos\\CI-Plugins-Customer-Support\\AutomationProjects\\CrossPlatform\\VB\\TestCase_CrossPlatform_VB\\.local"
+      "outputPath": "C:\\Users\\alexandru.groza\\hwtrgr\\CLI.Playground\\CI-Plugins-Customer-Support\\AutomationProjects\\CrossPlatform\\VB\\TestCase_CrossPlatform_VB\\.local"
     },
     "frameworks": {
       "net6.0": {
@@ -6590,7 +6590,7 @@
             "version": "[1.16.2, 1.16.2]"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\alexandru.groza\\.nuget\\packages\\uipath.pipelines.activities\\1.0.7-alpha.5223100\\tools\\net6.0-windows7.0\\runtime.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\alexandru.groza\\AppData\\Local\\Programs\\UiPath\\Studio\\runtime.json"
       }
     },
     "runtimes": {
