@@ -1,67 +1,44 @@
-trigger:
-- main
+trigger: none
+pr: none
 
 pool:
   vmImage: windows-latest
 
-# variables:
-#   UIPATH_EXTENSIONS_CLI_TELEMETRY_ENABLED: 'False'
-
 steps:
-
   - task: DownloadPackage@1
     inputs:
       packageType: 'nuget'
-      feed: ''
-      view: ''
-      definition: ''
-      version: ''
+      feed: '/dcd1e333-0124-49de-ba88-1a9997f883b1'
+      view: '44d13dae-d7b4-457f-b97e-ae45bdf2e7f9'
+      definition: '5d1973e4-d8e0-42b9-8c06-beb25937dc4b'
+      version: '23.10.8894.39673'
       extract: false
       downloadPath: '$(System.ArtifactsDirectory)'
-
-  - task: UiPathInstallPlatform-preview@4
+  
+  - task: UiPathInstallPlatform@4
     inputs:
-      cliVersion: 'WIN_22.10.8438.32859'
+      cliVersion: 'WIN_23.10.8894.39673'
       cliNupkgPath: '$(System.ArtifactsDirectory)\UiPath.CLI.Windows.nupkg'
 
-  - task: UiPathAssets-preview@4
-    inputs:
-      orchestratorConnection: 'OrchestratorConnection'
-      folderName: 'Support'
-      assetActionType: 'Deploy'
-      csvFile: 'deploy_assests.csv'
-      traceLevel: 'Information'
-
-  - task: UiPathPack-preview@4
-    inputs:
-      versionType: 'AutoVersion'
-      projectJsonPath: 'project.json'
-      orchestratorConnection: 'OrchestratorConnection'
-      outputPath: '$(Build.ArtifactStagingDirectory)\Output'
-      runWorkflowAnalysis: true
-      traceLevel: 'Information'
-
-  - task: UiPathDeploy-preview@4
-    inputs:
-      orchestratorConnection: 'OrchestratorConnection'
-      packagesPath: '$(Build.ArtifactStagingDirectory)\Output'
-      folderName: 'Support'
-      traceLevel: 'Information'
-
-  - task: UiPathTest-preview@4
+  - task: UiPathTest@4
     inputs:
       testTarget: 'TestProject'
-      orchestratorConnection: 'OrchestratorConnection'
-      testProjectPath: 'project.json'
-      folderName: 'Support'
-      timeout: '7200'
+      orchestratorConnection: 'demo ext app'
+      testProjectPath: 'AutomationProjects/CrossPlatform/VB/TestCase_CrossPlatform_VB/project.json'
+      folderName: 'AzureFolder'
       traceLevel: 'Information'
-      attachRobotLogs: true
-
-  - task: UiPathRunJob-preview@4
+  
+  - task: UiPathPack@4
     inputs:
-      orchestratorConnection: 'OrchestratorConnection'
-      processName: ''
-      folderName: 'Support'
-      jobCount: 1
+      versionType: 'AutoVersion'
+      projectJsonPath: 'AutomationProjects/CrossPlatform/VB/TestCase_CrossPlatform_VB/project.json'
+      orchestratorConnection: 'demo ext app'
+      outputPath: '$(Build.ArtifactStagingDirectory)\Output'
+      traceLevel: 'Information'
+  
+  - task: UiPathDeploy@4
+    inputs:
+      orchestratorConnection: 'demo ext app'
+      packagesPath: '$(Build.ArtifactStagingDirectory)\Output'
+      folderName: 'AzureFolder'
       traceLevel: 'Information'
