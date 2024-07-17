@@ -25,7 +25,7 @@ steps:
       testTarget: 'TestProject'
       orchestratorConnection: 'demo ext app'
       testProjectPath: 'AutomationProjects/CrossPlatform/VB/TestCase_CrossPlatform_VB/project.json'
-      folderName: 'Azure Folder'
+      folderName: 'AzureFolder'
       traceLevel: 'Information'
   
   - task: UiPathPack@4
