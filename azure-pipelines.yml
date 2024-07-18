@@ -29,14 +29,14 @@ steps:
     inputs:
       testTarget: 'TestProject'
       orchestratorConnection: 'stg CiPlugins'
-      testProjectPath: 'AutomationProjects/CrossPlatform/VB/DemoLibrary/project.json'
+      testProjectPath: 'AutomationProjects/Windows/VB/DemoProcess/project.json'
       folderName: 'AzureFolder'
       traceLevel: 'Information'
   
   - task: UiPathPack@4
     inputs:
       versionType: 'AutoVersion'
-      projectJsonPath: 'AutomationProjects/CrossPlatform/VB/DemoLibrary/project.json'
+      projectJsonPath: 'AutomationProjects/Windows/VB/DemoProcess/project.json'
       orchestratorConnection: 'stg CiPlugins'
       outputPath: '$(Build.ArtifactStagingDirectory)\Output'
       traceLevel: 'Information'
