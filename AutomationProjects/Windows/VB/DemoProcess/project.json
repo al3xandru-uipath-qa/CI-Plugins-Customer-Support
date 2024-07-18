@@ -46,7 +46,7 @@
     },
     "fileInfoCollection": [
       {
-        "editingStatus": "InProgress",
+        "editingStatus": "Publishable",
         "testCaseId": "23753b1a-742e-49fa-9288-978d82ba9b78",
         "testCaseType": "TestCase",
         "executionTemplateInvokeIsolated": false,
