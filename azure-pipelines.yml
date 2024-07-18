@@ -28,7 +28,7 @@ steps:
   - task: UiPathTest@4
     inputs:
       testTarget: 'TestProject'
-      orchestratorConnection: 'demo ext app'
+      orchestratorConnection: 'stg CiPlugins'
       testProjectPath: 'AutomationProjects/CrossPlatform/VB/TestCase_CrossPlatform_VB/project.json'
       folderName: 'AzureFolder'
       traceLevel: 'Information'
@@ -37,13 +37,13 @@ steps:
     inputs:
       versionType: 'AutoVersion'
       projectJsonPath: 'AutomationProjects/CrossPlatform/VB/TestCase_CrossPlatform_VB/project.json'
-      orchestratorConnection: 'demo ext app'
+      orchestratorConnection: 'stg CiPlugins'
       outputPath: '$(Build.ArtifactStagingDirectory)\Output'
       traceLevel: 'Information'
   
   - task: UiPathDeploy@4
     inputs:
-      orchestratorConnection: 'demo ext app'
+      orchestratorConnection: 'stg CiPlugins'
       packagesPath: '$(Build.ArtifactStagingDirectory)\Output'
       folderName: 'AzureFolder'
       traceLevel: 'Information'
