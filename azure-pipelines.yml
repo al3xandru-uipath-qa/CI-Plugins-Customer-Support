@@ -1,31 +1,49 @@
 trigger: none
 pr: none
 
-parameters:
-  - name: testId
-    displayName: 'testId'
-    type: string
-    default: '36456543'
+# pr:
+#   branches:
+#     include:
+#     - main
 
 pool:
   vmImage: windows-latest
 
 steps:
-  - powershell: |
-      echo "##vso[task.setvariable variable=COVERED_TESTS]23,45,38,87"
-    displayName: 'Set Mock COVERED_TESTS Environment Variable'
-  
-  - powershell: |
-      $coveredTests = "$(COVERED_TESTS)".Split(',')
-      $shouldRun = $coveredTests -contains "${{ parameters.testId }}"
-      echo "##vso[task.setvariable variable=ShouldRunTask]$shouldRun"
-    displayName: 'Set ShouldRunTask Variable'
-
-  - task: PowerShell@2
-    condition: and(succeeded(), eq(variables['ShouldRunTask'], 'True'))
+  - task: DownloadPackage@1
     inputs:
-      targetType: 'inline'
-      script: |
-        # Write your PowerShell commands here.
-        
-        Write-Host "Hello World"
+      packageType: 'nuget'
+      feed: '/dcd1e333-0124-49de-ba88-1a9997f883b1'
+      view: '44d13dae-d7b4-457f-b97e-ae45bdf2e7f9'
+      definition: '5d1973e4-d8e0-42b9-8c06-beb25937dc4b'
+      version: '23.10.8894.39673'
+      extract: false
+      downloadPath: '$(System.ArtifactsDirectory)'
+  
+  - task: UiPathInstallPlatform@4
+    inputs:
+      cliVersion: 'WIN_23.10.8894.39673'
+      cliNupkgPath: '$(System.ArtifactsDirectory)\UiPath.CLI.Windows.nupkg'
+
+  - task: UiPathTest@4
+    inputs:
+      testTarget: 'TestProject'
+      orchestratorConnection: 'demo ext app'
+      testProjectPath: 'AutomationProjects/CrossPlatform/VB/TestCase_CrossPlatform_VB/project.json'
+      folderName: 'AzureFolder'
+      traceLevel: 'Information'
+  
+  - task: UiPathPack@4
+    inputs:
+      versionType: 'AutoVersion'
+      projectJsonPath: 'AutomationProjects/CrossPlatform/VB/TestCase_CrossPlatform_VB/project.json'
+      orchestratorConnection: 'demo ext app'
+      outputPath: '$(Build.ArtifactStagingDirectory)\Output'
+      traceLevel: 'Information'
+  
+  - task: UiPathDeploy@4
+    inputs:
+      orchestratorConnection: 'demo ext app'
+      packagesPath: '$(Build.ArtifactStagingDirectory)\Output'
+      folderName: 'AzureFolder'
+      traceLevel: 'Information'
