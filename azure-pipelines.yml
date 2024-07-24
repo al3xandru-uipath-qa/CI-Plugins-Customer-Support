@@ -29,13 +29,13 @@ steps:
     inputs:
       versionType: 'AutoVersion'
       projectJsonPath: 'AutomationProjects/CrossPlatform/VB/SimpleLog_CrossPlatform_VB/project.json'
-      orchestratorConnection: 'stg CiPlugins'
+      orchestratorConnection: 'alpha-for-official'
       outputPath: '$(Build.ArtifactStagingDirectory)\Output'
       traceLevel: 'Information'
   
   - task: UiPathDeploy@4
     inputs:
-      orchestratorConnection: 'stg CiPlugins'
+      orchestratorConnection: 'alpha-for-official'
       packagesPath: '$(Build.ArtifactStagingDirectory)\Output'
       folderName: 'AzureFolder'
       traceLevel: 'Information'
