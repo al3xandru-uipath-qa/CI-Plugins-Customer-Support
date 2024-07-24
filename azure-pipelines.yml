@@ -20,22 +20,22 @@ steps:
       extract: false
       downloadPath: '$(System.ArtifactsDirectory)'
   
-  - task: UiPathInstallPlatform@4
+  - task: UiPathInstallPlatform-preview@4
     inputs:
       cliVersion: 'WIN_23.10.8894.39673'
       cliNupkgPath: '$(System.ArtifactsDirectory)\UiPath.CLI.Windows.nupkg'
   
-  - task: UiPathPack@4
+  - task: UiPathPack-preview@4
     inputs:
       versionType: 'AutoVersion'
       projectJsonPath: 'AutomationProjects/CrossPlatform/VB/SimpleLog_CrossPlatform_VB/project.json'
-      orchestratorConnection: 'alpha-for-official'
+      orchestratorConnection: 'alpha-preview'
       outputPath: '$(Build.ArtifactStagingDirectory)\Output'
       traceLevel: 'Information'
   
-  - task: UiPathDeploy@4
+  - task: UiPathDeploy-preview@4
     inputs:
-      orchestratorConnection: 'alpha-for-official'
+      orchestratorConnection: 'alpha-preview'
       packagesPath: '$(Build.ArtifactStagingDirectory)\Output'
       folderName: 'Pipelines'
       traceLevel: 'Information'
