@@ -13,10 +13,10 @@ steps:
   - task: DownloadPackage@1
     inputs:
       packageType: 'nuget'
-      feed: '03327aeb-cec9-448f-bdda-9ca558ee7f9c/c0a014d3-bb1e-4495-a89f-711e0d5e67fe'
-      view: 'e159cfb8-8ced-4a5a-96f5-8dbe46b6cfdd'
-      definition: 'f53f6c29-0f44-4fb5-96ea-794b815c5b39'
-      version: '24.11.0-alpha.17354'
+      feed: '/2a0f0189-f7d9-4fa6-850c-80a9a1307654'
+      view: 'd98cc08c-815d-437f-a08c-b73af7136624'
+      definition: 'dee6e24c-883e-442c-b0d3-23155c6536c6'
+      version: '24.11.0-alpha-3366'
       extract: false
       downloadPath: '$(System.ArtifactsDirectory)'
   
@@ -24,26 +24,18 @@ steps:
     inputs:
       cliVersion: 'WIN_23.10.8894.39673'
       cliNupkgPath: '$(System.ArtifactsDirectory)\UiPath.CLI.Windows.nupkg'
-
-  # - task: UiPathTest@4
-  #   inputs:
-  #     testTarget: 'TestProject'
-  #     orchestratorConnection: 'stg CiPlugins'
-  #     testProjectPath: 'AutomationProjects/CrossPlatform/VB/TestCase_CrossPlatform_VB/project.json'
-  #     folderName: 'AzureFolder'
-  #     traceLevel: 'Information'
   
   - task: UiPathPack@4
     inputs:
       versionType: 'AutoVersion'
-      projectJsonPath: 'AutomationProjects/CrossPlatform/VB/TestCase_CrossPlatform_VB/project.json'
+      projectJsonPath: 'AutomationProjects/CrossPlatform/VB/SimpleLog_CrossPlatform_VB/project.json'
       orchestratorConnection: 'stg CiPlugins'
       outputPath: '$(Build.ArtifactStagingDirectory)\Output'
       traceLevel: 'Information'
   
-  # - task: UiPathDeploy@4
-  #   inputs:
-  #     orchestratorConnection: 'stg CiPlugins'
-  #     packagesPath: '$(Build.ArtifactStagingDirectory)\Output'
-  #     folderName: 'AzureFolder'
-  #     traceLevel: 'Information'
+  - task: UiPathDeploy@4
+    inputs:
+      orchestratorConnection: 'stg CiPlugins'
+      packagesPath: '$(Build.ArtifactStagingDirectory)\Output'
+      folderName: 'AzureFolder'
+      traceLevel: 'Information'
