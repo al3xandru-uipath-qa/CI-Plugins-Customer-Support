@@ -38,4 +38,5 @@ steps:
       orchestratorConnection: 'alpha-preview'
       packagesPath: '$(Build.ArtifactStagingDirectory)\Output'
       folderName: 'Pipelines'
+      processName: 'custom-project-name'
       traceLevel: 'Information'
