@@ -37,5 +37,5 @@ steps:
     inputs:
       orchestratorConnection: 'alpha-for-official'
       packagesPath: '$(Build.ArtifactStagingDirectory)\Output'
-      folderName: 'AzureFolder'
+      folderName: 'Pipelines'
       traceLevel: 'Information'
