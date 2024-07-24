@@ -13,10 +13,10 @@ steps:
   - task: DownloadPackage@1
     inputs:
       packageType: 'nuget'
-      feed: '/dcd1e333-0124-49de-ba88-1a9997f883b1'
-      view: '44d13dae-d7b4-457f-b97e-ae45bdf2e7f9'
-      definition: '5d1973e4-d8e0-42b9-8c06-beb25937dc4b'
-      version: '23.10.8894.39673'
+      feed: '03327aeb-cec9-448f-bdda-9ca558ee7f9c/c0a014d3-bb1e-4495-a89f-711e0d5e67fe'
+      view: 'e159cfb8-8ced-4a5a-96f5-8dbe46b6cfdd'
+      definition: 'f53f6c29-0f44-4fb5-96ea-794b815c5b39'
+      version: '24.11.0-alpha.17354'
       extract: false
       downloadPath: '$(System.ArtifactsDirectory)'
   
@@ -25,40 +25,25 @@ steps:
       cliVersion: 'WIN_23.10.8894.39673'
       cliNupkgPath: '$(System.ArtifactsDirectory)\UiPath.CLI.Windows.nupkg'
 
-  - task: UiPathTest@4
-    inputs:
-      testTarget: 'TestProject'
-      orchestratorConnection: 'stg CiPlugins'
-      testProjectPath: 'AutomationProjects/Windows/VB/DemoProcess/project.json'
-      folderName: 'AzureFolder'
-      traceLevel: 'Information'
+  # - task: UiPathTest@4
+  #   inputs:
+  #     testTarget: 'TestProject'
+  #     orchestratorConnection: 'stg CiPlugins'
+  #     testProjectPath: 'AutomationProjects/CrossPlatform/VB/TestCase_CrossPlatform_VB/project.json'
+  #     folderName: 'AzureFolder'
+  #     traceLevel: 'Information'
   
   - task: UiPathPack@4
     inputs:
       versionType: 'AutoVersion'
-      projectJsonPath: 'AutomationProjects/Windows/VB/DemoProcess/project.json'
+      projectJsonPath: 'AutomationProjects/CrossPlatform/VB/TestCase_CrossPlatform_VB/project.json'
       orchestratorConnection: 'stg CiPlugins'
       outputPath: '$(Build.ArtifactStagingDirectory)\Output'
       traceLevel: 'Information'
   
-  - task: UiPathDeploy@4
-    inputs:
-      orchestratorConnection: 'stg CiPlugins'
-      packagesPath: '$(Build.ArtifactStagingDirectory)\Output'
-      folderName: 'AzureFolder'
-      traceLevel: 'Information'
-  
-  - task: UiPathAssets@4
-    inputs:
-      orchestratorConnection: 'stg CiPlugins'
-      folderName: 'AzureFolder'
-      assetActionType: 'Deploy'
-      csvFile: 'Assets/assests.csv'
-      traceLevel: 'Information'
-
-  - task: UiPathRunJob@4
-    inputs:
-      orchestratorConnection: 'stg CiPlugins'
-      processName: 'DemoProcess'
-      folderName: 'AzureFolder'
-      traceLevel: 'Information'
+  # - task: UiPathDeploy@4
+  #   inputs:
+  #     orchestratorConnection: 'stg CiPlugins'
+  #     packagesPath: '$(Build.ArtifactStagingDirectory)\Output'
+  #     folderName: 'AzureFolder'
+  #     traceLevel: 'Information'
