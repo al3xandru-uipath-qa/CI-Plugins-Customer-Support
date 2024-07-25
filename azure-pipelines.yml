@@ -13,30 +13,21 @@ steps:
   - task: DownloadPackage@1
     inputs:
       packageType: 'nuget'
-      feed: '/2a0f0189-f7d9-4fa6-850c-80a9a1307654'
-      view: 'd98cc08c-815d-437f-a08c-b73af7136624'
-      definition: 'dee6e24c-883e-442c-b0d3-23155c6536c6'
-      version: '24.11.0-alpha-3366'
+      feed: '03327aeb-cec9-448f-bdda-9ca558ee7f9c/3c9acfa8-aca5-4d13-b294-50fc18fd4611'
+      view: '57750bdc-fc87-44d4-9588-f82ed5976e95'
+      definition: '71500f34-1d0b-4e9a-a48f-d799316847ff'
+      version: '23.4.8951.9936'
       extract: false
       downloadPath: '$(System.ArtifactsDirectory)'
   
-  - task: UiPathInstallPlatform-preview@4
+  - task: UiPathInstallPlatform@4
     inputs:
-      cliVersion: 'WIN_23.10.8894.39673'
-      cliNupkgPath: '$(System.ArtifactsDirectory)\UiPath.CLI.Windows.nupkg'
+      cliVersion: 'WIN_23.10.8894.39673'  # doesn't matter that here it's 23.10
+      cliNupkgPath: '$(System.ArtifactsDirectory)/UiPath.CLI.Windows.nupkg'
   
-  - task: UiPathPack-preview@4
+  - task: UiPathPack@4
     inputs:
       versionType: 'AutoVersion'
-      projectJsonPath: 'AutomationProjects/CrossPlatform/VB/SimpleLog_CrossPlatform_VB/project.json'
-      orchestratorConnection: 'alpha-preview'
+      projectJsonPath: 'AutomationProjects/CrossPlatform/VB/TestCase_CrossPlatform_VB/project.json'
       outputPath: '$(Build.ArtifactStagingDirectory)\Output'
-      traceLevel: 'Information'
-  
-  - task: UiPathDeploy-preview@4
-    inputs:
-      orchestratorConnection: 'alpha-preview'
-      packagesPath: '$(Build.ArtifactStagingDirectory)\Output'
-      folderName: 'Pipelines'
-      processNames: '$(Build.SourcesDirectory)/processNames.csv'
       traceLevel: 'Information'
